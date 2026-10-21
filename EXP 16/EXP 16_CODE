@@ -1,0 +1,16 @@
+import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+inputs = np.array([[1, 0]])
+weights1 = np.array([[0.5, 0.2],
+                     [0.3, 0.4]])
+weights2 = np.array([[0.6],
+                     [0.7]])
+
+hidden = sigmoid(np.dot(inputs, weights1))
+output = sigmoid(np.dot(hidden, weights2))
+
+print("Hidden Layer:", hidden)
+print("Output:", output)
