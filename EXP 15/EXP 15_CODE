@@ -1,0 +1,22 @@
+
+from sklearn.tree import DecisionTreeClassifier
+
+# Features: Weather, Temperature
+# 0 = Rainy/Cold, 1 = Sunny/Hot
+
+X = [
+    [0, 0],
+    [0, 1],
+    [1, 0],
+    [1, 1],
+    [1, 1]
+]
+
+y = ['No', 'No', 'Yes', 'Yes', 'Yes']
+
+model = DecisionTreeClassifier(random_state=0)
+model.fit(X, y)
+
+prediction = model.predict([[1, 0]])
+
+print("Prediction:", prediction[0])
