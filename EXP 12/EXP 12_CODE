@@ -1,0 +1,51 @@
+
+board = [' '] * 9
+
+def display():
+    for i in range(0, 9, 3):
+        print(" | ".join(board[i:i+3]))
+        if i < 6:
+            print("--+---+--")
+
+def check_win(player):
+    wins = [
+        (0, 1, 2), (3, 4, 5), (6, 7, 8),
+        (0, 3, 6), (1, 4, 7), (2, 5, 8),
+        (0, 4, 8), (2, 4, 6)
+    ]
+    return any(all(board[i] == player for i in w)
+               for w in wins)
+
+player = 'X'
+turns = 0
+
+while turns < 9:
+    display()
+
+    try:
+        pos = int(input(f"Player {player}, enter position (1-9): "))
+    except ValueError:
+        print("Invalid input! Enter one number from 1 to 9.")
+        continue
+
+    if pos < 1 or pos > 9:
+        print("Position must be between 1 and 9.")
+        continue
+
+    if board[pos - 1] != ' ':
+        print("Position already occupied! Try again.")
+        continue
+
+    board[pos - 1] = player
+    turns += 1
+
+    if check_win(player):
+        display()
+        print(player, "wins!")
+        break
+
+    player = 'O' if player == 'X' else 'X'
+
+else:
+    display()
+    print("Game Draw!")
