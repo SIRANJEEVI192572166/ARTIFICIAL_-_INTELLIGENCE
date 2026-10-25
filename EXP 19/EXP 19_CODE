@@ -1,0 +1,6 @@
+% Experiment 9: Student-Teacher-Subject Code
+
+student_teacher_subject(arun, ramesh, csa17).
+student_teacher_subject(bala, priya, csa18).
+student_teacher_subject(kumar, ramesh, csa19).
+student_teacher_subject(ravi, priya, csa20).
