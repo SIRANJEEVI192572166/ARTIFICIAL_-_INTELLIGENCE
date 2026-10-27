@@ -1,0 +1,9 @@
+% Experiment 14: Diet Recommendation System
+
+diet(diabetes, 'Low-sugar foods and vegetables').
+diet(hypertension, 'Low-salt foods and fruits').
+diet(obesity, 'Balanced diet and portion control').
+diet(anemia, 'Iron-rich foods such as beans and spinach').
+
+recommend_diet(Disease, Diet) :-
+    diet(Disease, Diet).
