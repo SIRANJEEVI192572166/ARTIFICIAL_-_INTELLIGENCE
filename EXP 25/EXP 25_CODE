@@ -1,0 +1,11 @@
+% Experiment 15: Monkey Banana Problem
+
+move(on_floor, on_box).
+
+get_bananas(on_box, has_bananas).
+
+solve :-
+    move(on_floor, on_box),
+    get_bananas(on_box, has_bananas),
+    write('Monkey gets the bananas.'),
+    nl.
