@@ -1,0 +1,11 @@
+% Backward Chaining
+
+fact(sunny).
+fact(warm).
+
+rule(go_outside) :-
+    fact(sunny),
+    fact(warm).
+
+rule(good_day) :-
+    rule(go_outside).
