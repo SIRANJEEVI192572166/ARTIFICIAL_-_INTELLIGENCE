@@ -1,0 +1,20 @@
+% Forward Chaining
+
+fact(sunny).
+fact(warm).
+
+rule(go_outside) :-
+    fact(sunny),
+    fact(warm).
+
+rule(good_day) :-
+    rule(go_outside).
+
+forward_chaining :-
+    rule(Conclusion),
+    write('Conclusion: '),
+    write(Conclusion),
+    nl,
+    fail.
+
+forward_chaining.
