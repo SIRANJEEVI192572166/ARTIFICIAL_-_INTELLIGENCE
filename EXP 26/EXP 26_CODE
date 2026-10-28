@@ -1,0 +1,19 @@
+% Fruit and Color Database
+
+fruit(apple, red).
+fruit(banana, yellow).
+fruit(grapes, purple).
+fruit(orange, orange).
+fruit(mango, yellow).
+
+% Display fruit and its color
+
+show_fruit :-
+    fruit(Fruit, Color),
+    write(Fruit),
+    write(' is '),
+    write(Color),
+    nl,
+    fail.
+
+show_fruit.
