@@ -1,0 +1,36 @@
+import random
+
+random.seed(1)
+
+population = [random.randint(0, 31) for _ in range(6)]
+
+for generation in range(20):
+
+    population.sort(key=lambda x: x * x, reverse=True)
+
+    new_population = population[:2]
+
+    while len(new_population) < 6:
+
+        p1, p2 = random.choices(population[:4], k=2)
+
+        b1 = format(p1, '05b')
+        b2 = format(p2, '05b')
+
+        point = random.randint(1, 4)
+
+        child = int(b1[:point] + b2[point:], 2)
+
+        if random.random() < 0.1:
+            bit = random.randint(0, 4)
+            child = child ^ (1 << bit)
+
+        new_population.append(child)
+
+    population = new_population
+
+best = max(population, key=lambda x: x * x)
+
+print("Genetic Algorithm")
+print("Best Solution:", best)
+print("Maximum Fitness:", best * best)
