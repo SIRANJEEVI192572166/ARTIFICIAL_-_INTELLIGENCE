@@ -1,0 +1,18 @@
+import numpy as np
+
+states = ["Sunny", "Rainy"]
+
+transition = np.array([
+    [0.8, 0.2],
+    [0.4, 0.6]
+])
+
+current = 0
+
+print("Markov Chain Prediction")
+
+for day in range(5):
+    print("Day", day + 1, ":", states[current])
+    current = np.argmax(transition[current])
+
+print("Prediction Completed")
