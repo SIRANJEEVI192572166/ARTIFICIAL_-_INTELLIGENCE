@@ -1,0 +1,28 @@
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+texts = [
+    "I love this product",
+    "This is very good",
+    "I hate this product",
+    "This is very bad"
+]
+
+labels = [
+    "Positive",
+    "Positive",
+    "Negative",
+    "Negative"
+]
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(texts)
+
+model = MultinomialNB()
+model.fit(X, labels)
+
+test = vectorizer.transform(["I love this"])
+prediction = model.predict(test)
+
+print("Sentiment Analysis")
+print("Sentiment:", prediction[0])
