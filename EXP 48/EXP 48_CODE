@@ -1,0 +1,36 @@
+print("Bayesian Network")
+
+p_rain = 0.2
+
+p_sprinkler = {
+    True: 0.01,
+    False: 0.4
+}
+
+p_wet = {
+    (True, True): 0.99,
+    (True, False): 0.90,
+    (False, True): 0.80,
+    (False, False): 0.0
+}
+
+numerator = 0
+denominator = 0
+
+for rain in [True, False]:
+    pr = p_rain if rain else 1 - p_rain
+
+    for sprinkler in [True, False]:
+        ps = p_sprinkler[rain] if sprinkler else 1 - p_sprinkler[rain]
+
+        joint = pr * ps * p_wet[(rain, sprinkler)]
+
+        denominator += joint
+
+        if rain:
+            numerator += joint
+
+result = numerator / denominator
+
+print("Probability of Rain given Wet Grass:")
+print(round(result, 4))
