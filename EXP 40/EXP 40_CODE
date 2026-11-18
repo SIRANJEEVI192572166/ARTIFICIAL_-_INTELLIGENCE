@@ -1,0 +1,20 @@
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+
+ratings = np.array([
+    [5, 4, 0, 0],
+    [4, 5, 0, 0],
+    [0, 0, 5, 4],
+    [0, 0, 4, 5]
+])
+
+similarity = cosine_similarity(ratings)
+
+print("User Similarity Matrix:")
+print(similarity)
+
+user = 0
+
+similar_users = np.argsort(similarity[user])[::-1]
+
+print("Similar Users:", similar_users[1:])
