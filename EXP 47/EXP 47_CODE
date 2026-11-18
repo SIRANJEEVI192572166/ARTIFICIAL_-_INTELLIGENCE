@@ -1,0 +1,21 @@
+from sklearn.datasets import load_iris
+from sklearn.model_selection import GridSearchCV
+from sklearn.tree import DecisionTreeClassifier
+
+data = load_iris()
+
+X = data.data
+y = data.target
+
+model = DecisionTreeClassifier(random_state=42)
+
+parameters = {
+    'max_depth': [2, 3, 4, 5]
+}
+
+grid = GridSearchCV(model, parameters, cv=5)
+grid.fit(X, y)
+
+print("Hyperparameter Tuning")
+print("Best Parameters:", grid.best_params_)
+print("Best Accuracy:", round(grid.best_score_ * 100, 2), "%")
